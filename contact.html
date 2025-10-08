@@ -23,31 +23,41 @@
   <main class="container">
     <section>
       <h2 id="contact">Get in touch</h2>
-      <p>Email: <a href="mailto:yourname@example.com">yourname@example.com</a></p>
+      <p>Address: 123 Main St, Bloomington, IN (example)</p>
+      <p>Email: <a href="mailto:mkcundif@iu.edu">mkcundif@iu.edu</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/michaelcundiff/" target="_blank" rel="noopener">michaelcundiff</a></p>
+      <p>GitHub: <a href="https://github.com/mkcundif" target="_blank" rel="noopener">mkcundif</a></p>
+
+      <h3 style="margin-top:1rem">Contact form</h3>
       <form id="contact-form" action="thankyou.html" method="get" novalidate>
-        <div>
+        <div class="form-row">
           <label for="first">First Name</label>
-          <input id="first" name="first" type="text" required>
+          <input id="first" name="first" type="text" required aria-required="true">
+          <div class="error" id="err-first" aria-live="polite"></div>
         </div>
 
-        <div>
+        <div class="form-row">
           <label for="last">Last Name</label>
-          <input id="last" name="last" type="text" required>
+          <input id="last" name="last" type="text" required aria-required="true">
+          <div class="error" id="err-last" aria-live="polite"></div>
         </div>
 
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
+        <div class="form-row">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" required aria-required="true" pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$">
+          <div class="error" id="err-email" aria-live="polite"></div>
         </div>
 
-        <div>
+        <div class="form-row">
           <label for="password">Password</label>
-          <input id="password" name="password" type="password" minlength="8" required>
+          <input id="password" name="password" type="password" minlength="8" required aria-required="true">
+          <div class="error" id="err-password" aria-live="polite"></div>
         </div>
 
-        <div>
+        <div class="form-row">
           <label for="confirm">Confirm Password</label>
-          <input id="confirm" name="confirm" type="password" minlength="8" required>
+          <input id="confirm" name="confirm" type="password" minlength="8" required aria-required="true">
+          <div class="error" id="err-confirm" aria-live="polite"></div>
         </div>
 
         <div style="margin-top:1rem">
@@ -56,16 +66,28 @@
       </form>
 
       <script>
-        // Minimal client-side validation for password match
+        // Enhanced client-side validation with inline error messages
         const form = document.getElementById('contact-form');
+        function setError(id, message){ document.getElementById(id).textContent = message; }
+        function clearErrors(){ ['err-first','err-last','err-email','err-password','err-confirm'].forEach(id=>document.getElementById(id).textContent=''); }
+
         form.addEventListener('submit', function(e){
-          const pw = document.getElementById('password').value;
-          const conf = document.getElementById('confirm').value;
-          if(pw !== conf){
-            e.preventDefault();
-            alert('Passwords do not match.');
-            return false;
-          }
+          clearErrors();
+          let hasError = false;
+          const first = document.getElementById('first');
+          const last = document.getElementById('last');
+          const email = document.getElementById('email');
+          const pw = document.getElementById('password');
+          const conf = document.getElementById('confirm');
+
+          if(!first.value.trim()){ setError('err-first','First name is required.'); hasError = true; }
+          if(!last.value.trim()){ setError('err-last','Last name is required.'); hasError = true; }
+          if(!email.value || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)){ setError('err-email','Please enter a valid email address.'); hasError = true; }
+          if(!pw.value || pw.value.length < 8){ setError('err-password','Password must be at least 8 characters.'); hasError = true; }
+          if(pw.value !== conf.value){ setError('err-confirm','Passwords do not match.'); hasError = true; }
+
+          if(hasError){ e.preventDefault(); return false; }
+          // On success, allow form to submit (redirect to thankyou.html)
           return true;
         });
       </script>
