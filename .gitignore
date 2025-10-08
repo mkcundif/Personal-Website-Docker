@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.env
+.vscode/
+.idea/
+.DS_Store
+# Byte-compiled / optimized / DLL files
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.installed.cfg
+
+# VS Code workspace settings
+.vscode/
+
+# Pytest cache
+.pytest_cache/

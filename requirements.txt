@@ -1,0 +1,15 @@
+# requirements.txt
+# Add one runtime dependency per line. Pin versions for reproducible installs like:
+#   package==1.2.3
+# Example common packages for a personal website (uncomment the ones you need):
+# Flask==2.3.3           # small web framework for dynamic sites
+# python-dotenv==1.0.0  # load environment variables from a .env file
+# requests==2.31.0      # HTTP client
+# gunicorn==20.1.0      # production WSGI server (Linux deploys)
+# mkdocs==1.5.0         # static site/documentation generator
+
+# To install these later (with your venv activated):
+#   pip install -r requirements.txt
+
+# Add your project's dependencies below:
+
