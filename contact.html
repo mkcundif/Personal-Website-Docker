@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Michael Cundiff</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Contact</h1>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2 id="contact">Get in touch</h2>
+      <p>Email: <a href="mailto:yourname@example.com">yourname@example.com</a></p>
+      <form id="contact-form" action="thankyou.html" method="get" novalidate>
+        <div>
+          <label for="first">First Name</label>
+          <input id="first" name="first" type="text" required>
+        </div>
+
+        <div>
+          <label for="last">Last Name</label>
+          <input id="last" name="last" type="text" required>
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" minlength="8" required>
+        </div>
+
+        <div>
+          <label for="confirm">Confirm Password</label>
+          <input id="confirm" name="confirm" type="password" minlength="8" required>
+        </div>
+
+        <div style="margin-top:1rem">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+      <script>
+        // Minimal client-side validation for password match
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', function(e){
+          const pw = document.getElementById('password').value;
+          const conf = document.getElementById('confirm').value;
+          if(pw !== conf){
+            e.preventDefault();
+            alert('Passwords do not match.');
+            return false;
+          }
+          return true;
+        });
+      </script>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Michael Cundiff</p>
+    </div>
+  </footer>
+</body>
+</html>
