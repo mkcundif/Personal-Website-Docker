@@ -12,4 +12,6 @@
 #   pip install -r requirements.txt
 
 # Add your project's dependencies below:
+Flask==2.3.3
+gunicorn==20.1.0
 

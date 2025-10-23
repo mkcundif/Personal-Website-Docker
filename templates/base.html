@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}Michael Cundiff{% endblock %}</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">{% block header %}Michael Cundiff{% endblock %}</h1>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="{{ url_for('index') }}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+        <a href="{{ url_for('about') }}" class="{% if request.path.startswith('/about') %}active{% endif %}">About</a>
+        <a href="{{ url_for('resume') }}" class="{% if request.path.startswith('/resume') %}active{% endif %}">Resume</a>
+        <a href="{{ url_for('projects') }}" class="{% if request.path.startswith('/projects') %}active{% endif %}">Projects</a>
+        <a href="{{ url_for('contact') }}" class="{% if request.path.startswith('/contact') %}active{% endif %}">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Michael Cundiff</p>
+    </div>
+  </footer>
+</body>
+</html>

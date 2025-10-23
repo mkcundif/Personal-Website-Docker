@@ -2,25 +2,69 @@
 __pycache__/
 *.py[cod]
 *.pyo
-*.pyd
-.Python
-env/
-venv/
-ENV/
-.env
-.vscode/
-.idea/
-.DS_Store
 # Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
 
 # Distribution / packaging
+.Python
 build/
 dist/
 *.egg-info/
 .installed.cfg
 
-# VS Code workspace settings
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Flask instance folder
+instance/
+.webassets-cache
+
+# Environments
+.env
+.env.*
+.venv/
+env/
+venv/
+ENV/
+
+# SQLite
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# VS Code
 .vscode/
 
-# Pytest cache
-.pytest_cache/
+# JetBrains
+.idea/
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Contact — Michael Cundiff{% endblock %}
+{% block header %}Contact{% endblock %}
+{% block content %}
+  <section>
+    <h2 id="contact">Get in touch</h2>
+  <p>Email: <a href="mailto:mkcundif@iu.edu">mkcundif@iu.edu</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/michaelcundiff/" target="_blank" rel="noopener">View My LinkedIn Profile</a></p>
+    <p>GitHub: <a href="https://github.com/mkcundif" target="_blank" rel="noopener">View My GitHub Profile</a></p>
+
+    <h3 style="margin-top:1rem">Add a project</h3>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="error" role="alert">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+    <form id="project-form" action="" method="post" novalidate>
+      <div class="form-row">
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" required aria-required="true">
+        <div class="error" id="err-title" aria-live="polite"></div>
+      </div>
+
+      <div class="form-row">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" required aria-required="true"></textarea>
+        <div class="error" id="err-description" aria-live="polite"></div>
+      </div>
+
+      <div class="form-row">
+        <label for="image_file_name">Image File Name</label>
+        <input id="image_file_name" name="image_file_name" type="text" placeholder="e.g. project1.jpg" required aria-required="true">
+        <div class="hint">Place your image in the <code>/images</code> folder and provide the file name only.</div>
+        <div class="error" id="err-image" aria-live="polite"></div>
+      </div>
+
+      <div style="margin-top:1rem">
+        <button type="submit">Add Project</button>
+      </div>
+    </form>
+
+    <script>
+      const form = document.getElementById('project-form');
+      function setError(id, message){ document.getElementById(id).textContent = message; }
+      function clearErrors(){ ['err-title','err-description','err-image'].forEach(id=>document.getElementById(id).textContent=''); }
+      form.addEventListener('submit', function(e){
+        clearErrors();
+        let hasError = false;
+        const title = document.getElementById('title');
+        const description = document.getElementById('description');
+        const image = document.getElementById('image_file_name');
+        if(!title.value.trim()){ setError('err-title','Title is required.'); hasError = true; }
+        if(!description.value.trim()){ setError('err-description','Description is required.'); hasError = true; }
+        if(!image.value.trim()){ setError('err-image','Image file name is required.'); hasError = true; }
+        if(hasError){ e.preventDefault(); return false; }
+        return true;
+      });
+    </script>
+  </section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Projects — Michael Cundiff{% endblock %}
+{% block header %}Projects{% endblock %}
+{% block content %}
+  <section style="margin-top:1rem">
+    <h2>Your Projects</h2>
+    {% if projects and projects|length > 0 %}
+      <div style="overflow-x:auto">
+        <table class="data-table" aria-describedby="projects-help">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Image</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in projects %}
+              <tr>
+                <td>{{ p.title }}</td>
+                <td>{{ p.description }}</td>
+                <td>
+                  <img src="/images/{{ p.image_file_name }}" alt="{{ p.title }} image" style="max-width:200px; border:1px solid #ddd; border-radius:6px;" />
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p>No projects yet. Add one on the <a href="{{ url_for('contact') }}">Contact</a> page.</p>
+    {% endif %}
+    <p id="projects-help" style="margin-top:0.75rem; color:#666">Images are loaded from the <code>/images</code> folder. Place your image files there and reference only the file name (e.g. <code>photo.jpg</code>).</p>
+  </section>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Michael Cundiff's Personal Website{% endblock %}
+{% block header %}Michael Cundiff's Personal Website{% endblock %}
+{% block content %}
+  <section class="intro">
+    <h2>Welcome</h2>
+    <p>I'm Michael Cundiff, a graduate of Indiana University with a double major in Finance and Accounting. I am currently pursuing a Master's in Information Systems at the Kelley School of Business. I'm passionate about the intersection of IT and accounting and connecting financial strategy with technological solutions. My current focus is on building expertise that connects financial decision-making with technology-driven solutions, enabling businesses to strengthen integrity, efficiency, and long-term strategy.</p>
+    <p class="cta"><a href="{{ url_for('projects') }}" class="button">See my projects</a></p>
+  </section>
+{% endblock %}
